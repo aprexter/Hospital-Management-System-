@@ -21,7 +21,7 @@ import java.util.List;
                 @UniqueConstraint(name = "unique_patient_name_birthdate", columnNames = {"name", "birthDate"})
         },
         indexes = {
-                @Index(name = "idx_patient_birth_date", columnList = "birthDate")
+                @Index(name = "idx_birth_date", columnList = "birthDate")
         }
 )
 @AllArgsConstructor

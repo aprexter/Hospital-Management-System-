@@ -25,10 +25,6 @@ public class Insurance extends BaseModel{
     @Column(nullable = false)
     private LocalDate validUntil;
 
-    @CreationTimestamp
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime createdAt;
-
     @OneToOne(mappedBy = "insurance") // inverse side
     private Patient patient;
 }
