@@ -17,7 +17,7 @@ import java.util.List;
 @Table(
         name = "patient",
         uniqueConstraints = {
-//                @UniqueConstraint(name = "unique_patient_email", columnNames = {"email"}),
+               //@UniqueConstraint(name = "unique_patient_email", columnNames = {"email"}), // alredy done on column level
                 @UniqueConstraint(name = "unique_patient_name_birthdate", columnNames = {"name", "birthDate"})
         },
         indexes = {

@@ -5,7 +5,9 @@ import com.aprexter.hospitalmanagementsystem.dto.LoginResponseDto;
 import com.aprexter.hospitalmanagementsystem.dto.SignUpRequestDto;
 import com.aprexter.hospitalmanagementsystem.dto.SignUpResponseDto;
 import org.jspecify.annotations.Nullable;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AuthService {
 
     public @Nullable LoginResponseDto login(LoginRequestDto loginRequestDto) {
