@@ -21,7 +21,7 @@ public class Appointment extends BaseModel{
     private String reason;
 
     @ManyToOne
-    @ToString.Exclude
+    @ToString.Exclude // to exclude this from the ToString methhod because o flombok annotation
     @JoinColumn(name = "patient_id", nullable = false) // patient is required and not nullable
     private Patient patient;
 

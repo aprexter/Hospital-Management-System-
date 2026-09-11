@@ -11,16 +11,18 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @MappedSuperclass
+//@EntityListeners(AuditingEntityListener.class)  need to do for the Spring  data Jpa auditng
 public class BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @CreationTimestamp
+    //@CreatedDate is also a good choice, but it belongs to Spring Data JPA auditing
+    //need to enable  Jpa auditing
+    @CreationTimestamp // Hibernate specific annotaion
     @Column(name = "created_at",nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @UpdateTimestamp
+    @UpdateTimestamp// Hibernate specific annotaion for
     @Column(name = "updated_at",nullable = false)
     private LocalDateTime updatedAt;
 }

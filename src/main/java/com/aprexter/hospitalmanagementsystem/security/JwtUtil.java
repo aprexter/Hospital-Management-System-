@@ -24,12 +24,39 @@ public class JwtUtil {
     @Value("${jwt.issuer}")
     private String issuer;
 
+    /**
+     * byte[] decodedKey =
+     *         Base64.getDecoder().decode(secret);
+     *
+     * return new SecretKeySpec(
+     *         decodedKey,
+     *         "HmacSHA256"
+     * );
+     *
+     */
+
     private SecretKey getSecretKey() {
+        /**
+         * Keys.hmacShaKeyFor(...)
+         * This comes from the JJWT library ,takes your secret bytes and creates a proper: SecretKey
+         */
         return Keys.hmacShaKeyFor(
                 secretKey.getBytes(StandardCharsets.UTF_8));
+        /**
+         * secretKey.getBytes(StandardCharsets.UTF_8)
+         * JWT signing algorithms such as HMAC don't work directly with a Java String.
+         * They need bytes So:
+         * String-->getBytes(UTF_8)--> byte[]--> SecretKey --. JWT signing/verification
+         */
+
+
     }
 
     public String generateToken(UserDetails userDetails) {
+        /**
+         * Jwts comes from the JJWT library
+         * builder() starts constructing your JWT
+         */
         return Jwts.builder()
                 .subject(userDetails.getUsername())
                 .claim("roles", userDetails.getAuthorities())

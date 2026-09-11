@@ -39,7 +39,13 @@ public class Patient extends BaseModel {
     private String gender;
 
     @OneToOne
-    @MapsId
+    @MapsId //Use the primary key of the associated User as the primary key of Patient
+    /**
+     * The patient.id itself acts as both:
+     *
+     * Primary Key of patient
+     * Foreign Key referencing user.id
+     */
     private User user;
 
     @CreationTimestamp
@@ -50,6 +56,10 @@ public class Patient extends BaseModel {
     private BloodGrpType bloodGroup;
 
     @OneToOne(cascade = {CascadeType.ALL}, orphanRemoval = true)
+    /**
+     * If the Insurance is removed from the Patient's relationship,not the patient itself, JPA should delete that Insurance record from the database.
+     * Patient owns an Insurance record.this ,this Manage the Insurance lifecycle together with the Patient.
+     */
     @JoinColumn(name = "pat_ins_id")
     private Insurance insurance;
 
