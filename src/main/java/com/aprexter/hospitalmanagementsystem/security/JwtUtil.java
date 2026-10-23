@@ -37,6 +37,10 @@ public class JwtUtil {
 
     private SecretKey getSecretKey() {
         /**
+         * secretKey
+         *     ↓
+         * "my-super-secret-key..."
+         * It is currently a String.
          * Keys.hmacShaKeyFor(...)
          * This comes from the JJWT library ,takes your secret bytes and creates a proper: SecretKey
          */
@@ -47,6 +51,13 @@ public class JwtUtil {
          * JWT signing algorithms such as HMAC don't work directly with a Java String.
          * They need bytes So:
          * String-->getBytes(UTF_8)--> byte[]--> SecretKey --. JWT signing/verification
+         * h → 104
+         * e → 101
+         * l → 108
+         * l → 108
+         * o → 111
+         * UTF-8 tells Java how to convert the characters into bytes.
+         * The returned object can then be used for JWT signing.
          */
 
 

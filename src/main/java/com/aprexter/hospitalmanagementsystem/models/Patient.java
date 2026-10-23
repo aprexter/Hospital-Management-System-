@@ -18,10 +18,10 @@ import java.util.List;
         name = "patient",
         uniqueConstraints = {
                //@UniqueConstraint(name = "unique_patient_email", columnNames = {"email"}), // alredy done on column level
-                @UniqueConstraint(name = "unique_patient_name_birthdate", columnNames = {"name", "birthDate"})
+                @UniqueConstraint(name = "unique_patient_name_birthdate", columnNames = {"name", "birth_date"})
         },
         indexes = {
-                @Index(name = "idx_birth_date", columnList = "birthDate")
+                @Index(name = "idx_birth_date", columnList = "birth_date")
         }
 )
 @AllArgsConstructor
@@ -45,6 +45,21 @@ public class Patient extends BaseModel {
      *
      * Primary Key of patient
      * Foreign Key referencing user.id
+     * This is called a shared primary key one-to-one relationship.
+     *              USER
+     *         ┌─────────────┐
+     *         │ id = 101    │
+     *         │ username    │
+     *         └──────┬──────┘
+     *                │
+     *                │ PK = FK
+     *                │
+     *         ┌──────▼──────┐
+     *         │ PATIENT     │
+     *         │ id = 101    │
+     *         │ bloodGroup  │
+     *         └─────────────┘
+     * So @MapsId removes the need for a separate foreign-key ID column.
      */
     private User user;
 
