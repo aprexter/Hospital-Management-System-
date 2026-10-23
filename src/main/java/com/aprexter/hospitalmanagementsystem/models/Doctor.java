@@ -14,7 +14,6 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-
 public class Doctor extends BaseModel {
     @OneToOne
     @MapsId
