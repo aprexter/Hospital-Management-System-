@@ -64,10 +64,12 @@ public class JwtUtil {
     }
 
     public String generateToken(UserDetails userDetails) {
+
         /**
          * Jwts comes from the JJWT library
          * builder() starts constructing your JWT
          */
+
         return Jwts.builder()
                 .subject(userDetails.getUsername())
                 .claim("roles", userDetails.getAuthorities())

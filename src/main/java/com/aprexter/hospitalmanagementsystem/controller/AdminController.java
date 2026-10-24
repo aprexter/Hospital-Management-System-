@@ -19,7 +19,7 @@ public class AdminController {
     private final PatientService patientService;
     private final DoctorService  doctorService;
 
-    @GetMapping()
+    @GetMapping("/patient")
     public ResponseEntity<List<PatientResponseDto>> getPatientById(@RequestParam(value = "page", defaultValue = "0") Integer pageNumber,
                                                                   @RequestParam(value = "size", defaultValue = "10") Integer pageSize){
         return ResponseEntity.ok(patientService.getAllPatients(pageNumber, pageSize));
